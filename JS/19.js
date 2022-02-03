@@ -26,5 +26,5 @@ function Table(range, number)
 
 for (let i = 0; i <= 100; i++)
 {
-    Table()
+    Table(1, i);
 }
