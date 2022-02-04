@@ -1,5 +1,7 @@
-let readline = require("readline-sync");
-let axios = require("axios");
+import axios from "axios";
+import readline from "readline-sync";
+import terminalimage from "terminal-image";
+
 let UserName = readline.question("Enter your user name : ");
 
 axios

@@ -15,14 +15,15 @@ function Ping()
 
 function Profile_Pic(link)
 {
-    
+    return axios.get(`${link}`);
 }
 
 Ping()
 .then((res) => {
     let Dp = res.data.avatar_url;
     console.log(`This is ${res.data.login} with ${res.data.followers} followers &  ${res.data.following} following`);
-    console.log(res.data);
+    Profile_Pic(Dp);
+    
 })
 .catch((err) => {
     console.log("Please Check again !");
