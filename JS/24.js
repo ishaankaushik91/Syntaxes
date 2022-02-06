@@ -5,26 +5,32 @@ import terminalImage from "terminal-image";
 
 let UserName = readline.question("Please enter username : ");
 
-function Ping()
-{
-    return axios.get(`https://api.github.com/users/${UserName}`, {
-        auth : `${UserName}`,
-        password : "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",
-    });
+function Ping() {
+  return axios.get(`https://api.github.com/users/${UserName}`, {
+    auth: `${UserName}`,
+    password: "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",
+  });
 }
 
-function Profile_Pic(link)
-{
-    return axios.get(`${link}`);
+function Profile_Pic(link) {
+  return axios.get({
+    method: "get",
+    url: `${link}`,
+    responseType: "stream",
+  });
 }
 
 Ping()
-.then((res) => {
+  .then((res) => {
     let Dp = res.data.avatar_url;
-    console.log(`This is ${res.data.login} with ${res.data.followers} followers &  ${res.data.following} following`);
-    Profile_Pic(Dp);
-    
-})
-.catch((err) => {
+    console.log(
+      `This is ${res.data.login} with ${res.data.followers} followers &  ${res.data.following} following`
+    );
+    Profile_Pic(Dp)
+    .then((res) => {
+      res.data.pipe(fs.createWriteStream(`${UserName}`));
+    });
+  })
+  .catch((err) => {
     console.log("Please Check again !");
-})
+  });
