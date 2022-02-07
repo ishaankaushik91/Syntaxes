@@ -3,10 +3,12 @@ import axios from "axios";
 
 function Hit()
 {
-    return axios.get("https://api.github.com/users", {
-        auth : "ishaankaushik91",
-        password : "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"
-    });
+    return axios.get(`https://api.github.com/users`, {
+        auth: {
+            username: "ishaankaushik91",
+            password: "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"
+        }
+    })
 }
 
 function Individual(link)
