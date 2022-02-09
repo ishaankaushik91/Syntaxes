@@ -3,8 +3,6 @@ import readline from "readline-sync";
 let IP = readline.question("Enter an IP address ");
 let Octets = IP.split(".");
 
-console.log(Validity(Octets));
-
 try {
   let Response = await Validity(Octets);
   console.log(Response);

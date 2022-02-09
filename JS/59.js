@@ -1,4 +1,3 @@
-import { PRIORITY_NORMAL } from "constants";
 import fs from "fs";
 
 function Readfile(fileName)
